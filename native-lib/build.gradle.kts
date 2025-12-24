@@ -1,8 +1,13 @@
 plugins {
     alias(libs.plugins.android.library)
+    id("maven-publish")
 }
 
 android {
+    publishing {
+        singleVariant("release")
+    }
+
     namespace = "simple.android.asi"
 
     compileSdk {
@@ -39,3 +44,4 @@ android {
 
 dependencies {
 }
+
