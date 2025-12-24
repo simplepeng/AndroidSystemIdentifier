@@ -1,8 +1,13 @@
 plugins {
     alias(libs.plugins.android.library)
+    id("maven-publish")
 }
 
 android {
+    publishing {
+        singleVariant("release")
+    }
+
     namespace = "simple.android.asi"
 
     compileSdk {
@@ -17,6 +22,11 @@ android {
             cmake {
                 cppFlags("")
             }
+        }
+
+        ndk {
+            abiFilters.add("armeabi-v7a")
+            abiFilters.add("arm64-v8a")
         }
     }
 
@@ -34,3 +44,17 @@ android {
 
 dependencies {
 }
+
+afterEvaluate {
+    publishing {
+        publications {
+            create<MavenPublication>("release") {
+                from(components["release"])
+//                groupId = "com.github.你的GitHub用户名"
+//                artifactId = "asi-native"
+//                version = "1.0.0"
+            }
+        }
+    }
+}
+
