@@ -55,5 +55,6 @@ dependencies {
     debugImplementation(libs.androidx.compose.ui.tooling)
     debugImplementation(libs.androidx.compose.ui.test.manifest)
     //
-    implementation(project(":native-lib"))
+//    implementation(project(":native-lib"))
+    implementation("com.github.simplepeng:AndroidSystemIdentifier:1.0.4")
 }
